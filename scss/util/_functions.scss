@@ -1,0 +1,18 @@
+@use "sass:math";
+
+
+@function responsiveUnit($px) {
+    @if (math.is-unitless($px)) {
+        @return math.div($px, 16);
+    }
+
+    @error("Positional argument 1 cannot have units");
+}
+
+@function em($px) {
+    @return responsiveUnit($px) + em;
+}
+
+@function rem($px) {
+    @return responsiveUnit($px) + rem;
+}
