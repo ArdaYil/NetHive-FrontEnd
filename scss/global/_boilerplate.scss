@@ -1,5 +1,18 @@
 
 
+:root {
+    --color-white: #f7f7f7;
+    --color-blue: #4649FF;
+    --color-green: #68BAA5;
+    --color-black: #161616;
+    --color-primary: var(--color-white);
+    --color-secondary: var(--color-blue);
+    --color-accent: var(--color-green);
+    --color-text-primary: var(--color-black);
+    --color-text-secondary: var(--color-white);
+    --color-text-accent: var(--color-green);
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -18,4 +31,12 @@ ol ul {
 a {
     text-decoration: none;
     display: inline-flex;
+}
+
+body {
+    background-color: var(--color-primary);
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+    color: var(--color-text-primary);
 }
