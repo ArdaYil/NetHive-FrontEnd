@@ -1,0 +1,7 @@
+@use "../util" as u;
+
+.icon-media {
+    display: flex;
+    align-items: center;
+    gap: u.em(10);
+}

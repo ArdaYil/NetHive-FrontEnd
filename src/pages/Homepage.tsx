@@ -1,5 +1,7 @@
+import NavSidebar from "../components/NavSidebar/NavSidebar";
+
 const Homepage = () => {
-  return <div>Homepage</div>;
+  return <NavSidebar />;
 };
 
 export default Homepage;

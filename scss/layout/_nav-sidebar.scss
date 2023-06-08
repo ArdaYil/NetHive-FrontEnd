@@ -1,0 +1,39 @@
+@use "../util" as u;
+
+.nav-sidebar {
+    $padding-right: 20;
+
+    display: grid;
+    position: fixed;
+    grid-template-columns: auto u.em(60);
+    gap: 0;
+    top: 0;
+    right: u.em(-$padding-right * 2);
+    background-color: var(--color-secondary);
+    height: 300vh;
+    padding: u.em(20);
+    transition: all 200ms;
+    padding-right: u.em($padding-right);
+    width: 0;
+
+    &__main-container {
+        width: fit-content;
+    }
+
+    &__nav-item {
+        margin-block: u.em(30);
+
+        &__text {
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+    }
+
+    &__close-btn {
+        margin-top: u.em(30);
+    }
+}
+
+.nav-sidebar.open {
+    width: u.em(300);
+}

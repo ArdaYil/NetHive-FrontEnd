@@ -7,8 +7,8 @@ const NavBar = () => {
     <nav className="navbar">
       <Logo />
       <div className="navbar__left-group">
-        <MenuButton />
         <ProfileIcon />
+        <MenuButton />
       </div>
     </nav>
   );

@@ -2,9 +2,18 @@
 
 @use "../util" as u;
 
+$size-small: 40;
 $size-medium: 55;
 
+@mixin imgSize($size) {
+    width: u.em($size);
+    height: u.em($size);
+}
+
+.img-small {
+    @include imgSize($size-small);
+}
+
 .img-medium {
-    width: u.em($size-medium);
-    height: u.em($size-medium);
+    @include imgSize($size-medium);
 }

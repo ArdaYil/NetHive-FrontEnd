@@ -13,6 +13,7 @@ dist
 cssDist
 dist-ssr
 *.local
+.sync
 
 # Editor directories and files
 .vscode/*

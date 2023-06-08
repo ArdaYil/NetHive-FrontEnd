@@ -1,0 +1,8 @@
+@use "../util" as u;
+
+.close-btn {
+    $size: 25;
+
+    width: u.em($size);
+    width: u.em($size);
+}
