@@ -1,7 +1,7 @@
 const MenuButton = () => {
   return (
-    <button>
-      <img src="/src/assets/hamburger-icon.png" />
+    <button className="navbar__menu-button">
+      <img className="img-medium" src="/src/assets/hamburger-icon.png" />
     </button>
   );
 };

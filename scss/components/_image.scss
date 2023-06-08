@@ -1,0 +1,10 @@
+
+
+@use "../util" as u;
+
+$size-medium: 55;
+
+.img-medium {
+    width: u.em($size-medium);
+    height: u.em($size-medium);
+}

@@ -4,10 +4,12 @@ import ProfileIcon from "./ProfileIcon";
 
 const NavBar = () => {
   return (
-    <nav>
+    <nav className="navbar">
       <Logo />
-      <MenuButton />
-      <ProfileIcon />
+      <div className="navbar__left-group">
+        <MenuButton />
+        <ProfileIcon />
+      </div>
     </nav>
   );
 };

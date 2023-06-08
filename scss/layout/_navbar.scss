@@ -1,0 +1,14 @@
+@use "../util" as u;
+
+.navbar {
+    background-color: var(--color-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: u.em(20) u.em(20);
+
+    &__left-group {
+        display: flex;
+        gap: u.em(15);
+    }
+}
