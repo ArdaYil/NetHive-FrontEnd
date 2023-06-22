@@ -36,9 +36,15 @@
     }
 
     &__checkbox-container {
-        margin-top: u.em(10);
+        margin-top: u.em(40);
         display: flex;
         flex-direction: column;
-        gap: u.em(5);
+        gap: u.em(10);
+    }
+
+    &__terms-of-service {
+        &__label {
+            margin-right: u.em(10);
+        }
     }
 }

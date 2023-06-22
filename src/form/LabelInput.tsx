@@ -19,9 +19,15 @@ const LabelInput = ({
 }: Props) => {
   const display = block ? "block" : "inline-block";
 
+  const space = className.indexOf(" ");
+  const classNameFirst = className.substring(0, space) + "__label";
+
+  const classNameSecond =
+    className.substring(space, className.length) + "__label";
+
   return (
     <label
-      className={className && className + "__label"}
+      className={className && classNameFirst + classNameSecond}
       style={{ display }}
       htmlFor={id}
     >

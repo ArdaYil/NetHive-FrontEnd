@@ -6,6 +6,7 @@ import Radiobox from "../form/Radiobox";
 import Date from "../form/Date";
 import Form from "../form/Form";
 import SubmitButton from "../form/SubmitButton";
+import { Link } from "react-router-dom";
 
 const headerInputSize = 48;
 
@@ -43,14 +44,25 @@ const Register = () => {
           <Radiobox id="female" name="gender">
             Female
           </Radiobox>
+          <Radiobox id="female" name="gender">
+            Other
+          </Radiobox>
         </div>
         <div className="auth-form__checkbox-container">
           <Checkbox id="newsletter">
             I want to get newsletters from Net Hive
           </Checkbox>
-          <Checkbox id="terms-of-service">
-            I accept Net Hive's terms of service
-          </Checkbox>
+          <div>
+            <Checkbox
+              className="auth-form__terms-of-service"
+              id="terms-of-service"
+            >
+              I accept Net Hive's terms of service
+            </Checkbox>
+            <Link className="link" to="/termsOfService">
+              Learn more
+            </Link>
+          </div>
         </div>
       </footer>
       <SubmitButton>Register</SubmitButton>
