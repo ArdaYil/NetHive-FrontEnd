@@ -4,9 +4,15 @@ interface Props {
   placeHolder: string;
   onChange: (value: string) => void;
   percentWidth?: number;
+  type?: "text" | "password" | "email";
 }
 
-const Input = ({ placeHolder, percentWidth = 100, onChange }: Props) => {
+const Input = ({
+  type = "text",
+  placeHolder,
+  percentWidth = 100,
+  onChange,
+}: Props) => {
   const [value, setValue] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +24,7 @@ const Input = ({ placeHolder, percentWidth = 100, onChange }: Props) => {
 
   return (
     <input
+      type={type}
       className="input"
       placeholder={placeHolder}
       onChange={handleChange}

@@ -11,7 +11,7 @@ const Form = ({ className, children }: Props) => {
   };
 
   return (
-    <form className={className + " form"} onSubmit={onSubmit}>
+    <form noValidate className={className + " form"} onSubmit={onSubmit}>
       {children}
     </form>
   );

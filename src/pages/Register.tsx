@@ -26,9 +26,13 @@ const Register = () => {
         />
       </header>
       <footer className="auth-form__main">
-        <Input placeHolder="Email" onChange={() => {}} />
-        <Input placeHolder="Password" onChange={() => {}} />
-        <Input placeHolder="Confirm Password" onChange={() => {}} />
+        <Input type="email" placeHolder="Email" onChange={() => {}} />
+        <Input type="password" placeHolder="Password" onChange={() => {}} />
+        <Input
+          type="password"
+          placeHolder="Confirm Password"
+          onChange={() => {}}
+        />
         <div className="auth-form__birthdate">
           <Date id="birthdate">Birthdate: </Date>
         </div>
