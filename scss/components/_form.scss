@@ -1,0 +1,32 @@
+@use "../util" as u;
+
+.input {
+    padding: u.em(10);
+    border-radius: u.em(10);
+    outline: none;
+    border: u.em(1) solid #aaa;
+    font-size: u.rem(14);
+}
+
+.checkbox, .radiobox {
+    margin-right: u.em(5);
+}
+
+.date {
+    margin-left: u.em(5);
+    border-radius: u.em(10);
+    padding: u.em(5);
+
+    &__label {
+        font-size: u.rem(17);
+    }
+}
+
+.submit-button {
+    position: absolute;
+    right: 0;
+}
+
+.form {
+    position: relative;
+}

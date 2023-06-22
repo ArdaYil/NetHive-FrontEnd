@@ -1,0 +1,24 @@
+@use "../util" as u;
+
+%btn {
+    border-radius: u.em(10);
+    font-weight: 600;
+    padding: u.em(10) u.em(25);
+    font-size: u.rem(16);
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(85%);
+    }
+}
+
+.btn {
+    @extend %btn;
+
+    &--primary {
+        @extend %btn;
+
+        background-color: var(--color-secondary);
+        color: var(--color-text-secondary);
+    }
+}

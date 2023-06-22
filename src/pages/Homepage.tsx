@@ -1,7 +1,13 @@
 import NavSidebar from "../components/NavSidebar/NavSidebar";
+import { Navigate } from "react-router-dom";
 
 const Homepage = () => {
-  return <NavSidebar />;
+  return (
+    <>
+      <Navigate to="/register" />
+      <NavSidebar />
+    </>
+  );
 };
 
 export default Homepage;
