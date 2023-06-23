@@ -44,7 +44,7 @@ const Register = () => {
           <Radiobox id="female" name="gender">
             Female
           </Radiobox>
-          <Radiobox id="female" name="gender">
+          <Radiobox id="other" name="gender">
             Other
           </Radiobox>
         </div>
