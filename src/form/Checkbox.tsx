@@ -6,14 +6,16 @@ interface Props {
   id: string;
   block?: boolean;
   className?: string;
+  onChange: (value: boolean) => void;
 }
 
-const Checkbox = ({ children, id, block, className }: Props) => (
+const Checkbox = ({ children, id, block, className, onChange }: Props) => (
   <LabelInput
     className={`checkbox ${className}`}
     children={children}
     id={id}
     block={block}
+    onChange={onChange}
     type="checkbox"
   ></LabelInput>
 );

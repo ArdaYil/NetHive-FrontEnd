@@ -4,6 +4,7 @@ interface Props {
   children: string;
   id: string;
   block?: boolean;
+  onChange: (date: Date) => void;
 }
 
 const Date = (props: Props) => (

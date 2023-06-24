@@ -5,6 +5,8 @@ interface Props {
   id: string;
   block?: boolean;
   name: string;
+  value: string;
+  onChange: (value: string) => void;
 }
 
 const Radiobox = (props: Props) => (

@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 interface Props {
   children?: string;
   id?: string;
@@ -5,6 +7,8 @@ interface Props {
   type?: string;
   name?: string;
   className?: string;
+  value?: string;
+  onChange: (data: any) => void;
   textPosition?: "text-start" | "text-end";
 }
 
@@ -13,9 +17,11 @@ const LabelInput = ({
   children,
   type,
   name,
+  value,
   textPosition = "text-end",
   className = "",
   block = false,
+  onChange,
 }: Props) => {
   const display = block ? "block" : "inline-block";
 
@@ -25,6 +31,9 @@ const LabelInput = ({
   const classNameSecond =
     className.substring(space, className.length) + "__label";
 
+  const getValue = (e: ChangeEvent<HTMLInputElement>) =>
+    type == "checkbox" ? e.target.checked : e.target.value;
+
   return (
     <label
       className={className && classNameFirst + classNameSecond}
@@ -32,7 +41,14 @@ const LabelInput = ({
       htmlFor={id}
     >
       {textPosition == "text-start" && children}
-      <input className={className} name={name} id={id} type={type} />
+      <input
+        onChange={(e) => onChange(getValue(e))}
+        className={className}
+        name={name}
+        id={id}
+        type={type}
+        value={value && value}
+      />
       {textPosition == "text-end" && children}
     </label>
   );
