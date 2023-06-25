@@ -1,18 +1,17 @@
+import _ from "lodash";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { z } from "zod";
 import Checkbox from "../form/Checkbox";
 import DateElement from "../form/Date";
 import Form from "../form/Form";
 import Input from "../form/Input";
-import Radiobox from "../form/Radiobox";
+import RadioGroup from "../form/RadioGroup";
 import SubmitButton from "../form/SubmitButton";
-import useRegisterStore from "../stores/UseRegisterStore";
-import _ from "lodash";
-import { z } from "zod";
-import { useState } from "react";
+import Time from "../services/Time";
 import { maxLength, minLength } from "../services/nameLengthErrorMessage";
 import parseZodErrors from "../services/parseZodErrors";
-import Time from "../services/Time";
-import RadioGroup from "../form/RadioGroup";
+import useRegisterStore from "../stores/UseRegisterStore";
 
 const headerInputSize = 48;
 
