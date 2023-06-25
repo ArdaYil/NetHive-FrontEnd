@@ -4,16 +4,20 @@ interface Props {
   children: string;
   id: string;
   block?: boolean;
+  error?: string;
   onChange: (date: Date) => void;
 }
 
 const Date = (props: Props) => (
-  <LabelInput
-    className="date"
-    {...props}
-    textPosition="text-start"
-    type="date"
-  ></LabelInput>
+  <div>
+    <LabelInput
+      className="date"
+      {...props}
+      textPosition="text-start"
+      type="date"
+    />
+    {props.error && <p className="input-error">{props.error}</p>}
+  </div>
 );
 
 export default Date;

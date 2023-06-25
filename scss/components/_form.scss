@@ -32,3 +32,9 @@
 .form {
     position: relative;
 }
+
+.input-error {
+    margin-left: u.em(5);
+    font-size: u.em(14);
+    color: red;
+}
