@@ -1,29 +1,20 @@
 @use "../util" as u;
 
-.auth-form {
+%auth-form {
     padding: u.em(10);
     width: u.em(700);
     margin-inline: auto;
     margin-top: u.em(50);
+}
 
-    &__title {
-        margin-bottom: u.em(20);
-        font-weight: 600;
-        font-size: u.rem(20);
-    }
-    
-    &__header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: u.em(20);
-    }
+.auth-title {
+    margin-bottom: u.em(20);
+    font-weight: 600;
+    font-size: u.rem(20);
+}
 
-    &__main {
-        display: flex;
-        gap: u.em(10);
-        flex-direction: column;
-    }
+.register-form {
+    @extend %auth-form;
 
     &__gender-container {
         margin-top: u.em(5);
@@ -54,5 +45,18 @@
         &__label {
             margin-right: u.em(10);
         }
+    }
+
+    &__login-link {
+        position: absolute;
+        bottom: u.em(-30);
+    }
+}
+
+.login-form {
+    @extend %auth-form;
+
+    &__login-btn {
+        position: relative;
     }
 }

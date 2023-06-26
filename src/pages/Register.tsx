@@ -11,7 +11,8 @@ import SubmitButton from "../form/SubmitButton";
 import Time from "../services/Time";
 import { maxLength, minLength } from "../services/nameLengthErrorMessage";
 import parseZodErrors from "../services/parseZodErrors";
-import useRegisterStore from "../stores/UseRegisterStore";
+import useRegisterStore from "../stores/useRegisterStore";
+import InputGroup from "../form/InputGroup";
 
 const headerInputSize = 48;
 
@@ -100,52 +101,56 @@ const Register = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="auth-form">
-      <h2 className="auth-form__title">Net Hive, Register Account</h2>
-      <header className="auth-form__header">
-        <Input
-          percentWidth={headerInputSize}
-          placeHolder="Name"
-          error={errors.name}
-          onChange={(name) => {
-            registerStore.setName(name);
-          }}
-        />
-        <Input
-          percentWidth={headerInputSize}
-          placeHolder="Surname"
-          error={errors.surname}
-          onChange={(surname) => {
-            registerStore.setSurname(surname);
-          }}
-        />
+    <Form onSubmit={handleSubmit} className="register-form">
+      <h2 className="auth-title">Net Hive, Register Account</h2>
+      <header>
+        <InputGroup flow="ROW">
+          <Input
+            percentWidth={headerInputSize}
+            placeHolder="Name"
+            error={errors.name}
+            onChange={(name) => {
+              registerStore.setName(name);
+            }}
+          />
+          <Input
+            percentWidth={headerInputSize}
+            placeHolder="Surname"
+            error={errors.surname}
+            onChange={(surname) => {
+              registerStore.setSurname(surname);
+            }}
+          />
+        </InputGroup>
       </header>
-      <footer className="auth-form__main">
-        <Input
-          type="email"
-          placeHolder="Email"
-          error={errors.email}
-          onChange={(email) => {
-            registerStore.setEmail(email);
-          }}
-        />
-        <Input
-          type="password"
-          placeHolder="Password"
-          error={errors.password}
-          onChange={(password) => {
-            registerStore.setPassword(password);
-          }}
-        />
-        <Input
-          type="password"
-          placeHolder="Confirm Password"
-          error={errors.confirmPassword}
-          onChange={(confirmPassword) => {
-            registerStore.setConfirmPassword(confirmPassword);
-          }}
-        />
-        <div className="auth-form__birthdate">
+      <footer className="register-form__main">
+        <InputGroup>
+          <Input
+            type="email"
+            placeHolder="Email"
+            error={errors.email}
+            onChange={(email) => {
+              registerStore.setEmail(email);
+            }}
+          />
+          <Input
+            type="password"
+            placeHolder="Password"
+            error={errors.password}
+            onChange={(password) => {
+              registerStore.setPassword(password);
+            }}
+          />
+          <Input
+            type="password"
+            placeHolder="Confirm Password"
+            error={errors.confirmPassword}
+            onChange={(confirmPassword) => {
+              registerStore.setConfirmPassword(confirmPassword);
+            }}
+          />
+        </InputGroup>
+        <div className="register-form__birthdate">
           <DateElement
             error={errors.birthdate}
             onChange={(birthdate) =>
@@ -158,12 +163,12 @@ const Register = () => {
         </div>
         <RadioGroup
           error={errors.gender}
-          className="auth-form__gender-container"
+          className="register-form__gender-container"
           name="Gender"
           radioBoxes={["Male", "Female", "Other"]}
           onChange={(gender) => registerStore.setGender(gender)}
         />
-        <div className="auth-form__checkbox-container">
+        <div className="register-form__checkbox-container">
           <Checkbox
             onChange={(newsletter) => registerStore.setNewsletter(newsletter)}
             id="newsletter"
@@ -176,7 +181,7 @@ const Register = () => {
               onChange={(termsOfService) =>
                 registerStore.setTermsOfService(termsOfService)
               }
-              className="auth-form__terms-of-service"
+              className="register-form__terms-of-service"
               id="terms-of-service"
             >
               I accept Net Hive's terms of service
@@ -188,6 +193,9 @@ const Register = () => {
         </div>
       </footer>
       <SubmitButton>Register</SubmitButton>
+      <Link className="link register-form__login-link" to="/login">
+        Already have an account?
+      </Link>
     </Form>
   );
 };
