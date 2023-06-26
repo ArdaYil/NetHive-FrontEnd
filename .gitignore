@@ -14,6 +14,7 @@ cssDist
 dist-ssr
 *.local
 .sync
+.env
 
 # Editor directories and files
 .vscode/*

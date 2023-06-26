@@ -5,11 +5,16 @@ import Input from "../form/Input";
 import InputGroup from "../form/InputGroup";
 import SubmitButton from "../form/SubmitButton";
 import useLoginStore from "../stores/useLoginStore";
+import APIClient from "../httpServices/apiClient";
 
 const Login = () => {
   const loginStore = useLoginStore();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    const apiClient = new APIClient();
+    const data = apiClient.get();
+    data.then((data) => console.log(data));
+  };
 
   return (
     <Form onSubmit={handleSubmit} className="login-form">
