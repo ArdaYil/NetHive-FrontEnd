@@ -5,6 +5,7 @@ interface Props {
   children: string;
   error?: string;
   id: string;
+  value: boolean;
   block?: boolean;
   className?: string;
   onChange: (value: boolean) => void;
@@ -15,6 +16,7 @@ const Checkbox = ({
   children,
   id,
   block,
+  value,
   className,
   onChange,
 }: Props) => (
@@ -24,6 +26,7 @@ const Checkbox = ({
       children={children}
       id={id}
       block={block}
+      checked={value}
       onChange={onChange}
       type="checkbox"
     ></LabelInput>

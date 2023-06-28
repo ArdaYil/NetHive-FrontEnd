@@ -4,6 +4,7 @@ interface Props {
   name: string;
   radioBoxes: string[];
   className?: string;
+  value: string;
   error?: string;
   onChange: (value: string) => void;
 }
@@ -13,6 +14,7 @@ const RadioGroup = ({
   className,
   radioBoxes,
   name,
+  value,
   onChange,
 }: Props) => {
   return (
@@ -26,6 +28,7 @@ const RadioGroup = ({
             id={radiobox.toLowerCase()}
             name={name.toLowerCase()}
             value={radiobox.toLowerCase()}
+            checked={radiobox.toLowerCase() === value}
           >
             {radiobox}
           </Radiobox>

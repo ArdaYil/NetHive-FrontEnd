@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 interface Props {
   placeHolder: string;
   onChange: (value: string) => void;
   percentWidth?: number;
+  value: string;
   error?: string;
   type?: "text" | "password" | "email";
 }
@@ -13,14 +14,12 @@ const Input = ({
   placeHolder,
   percentWidth = 100,
   error,
+  value,
   onChange,
 }: Props) => {
-  const [value, setValue] = useState("");
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    setValue(value);
     onChange(value);
   };
 

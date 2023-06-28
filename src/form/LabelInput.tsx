@@ -7,6 +7,7 @@ interface Props {
   type?: string;
   name?: string;
   className?: string;
+  checked?: boolean;
   value?: string;
   onChange: (data: any) => void;
   textPosition?: "text-start" | "text-end";
@@ -18,6 +19,7 @@ const LabelInput = ({
   type,
   name,
   value,
+  checked,
   textPosition = "text-end",
   className = "",
   block = false,
@@ -46,6 +48,7 @@ const LabelInput = ({
         className={className}
         name={name}
         id={id}
+        checked={checked}
         type={type}
         value={value && value}
       />

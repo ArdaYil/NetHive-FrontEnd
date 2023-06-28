@@ -19,6 +19,7 @@ interface RegisterState {
   setGender: (gender: string) => void;
   setNewsletter: (newsletter: boolean) => void;
   setTermsOfService: (termsOfService: boolean) => void;
+  reset: () => void;
 }
 
 const useRegisterStore = create<RegisterState>((set) => ({
@@ -40,6 +41,18 @@ const useRegisterStore = create<RegisterState>((set) => ({
   setGender: (gender) => set({ gender }),
   setNewsletter: (newsletter) => set({ newsletter }),
   setTermsOfService: (termsOfService) => set({ termsOfService }),
+  reset: () =>
+    set({
+      name: "",
+      surname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      birthdate: new Date(),
+      gender: "",
+      newsletter: false,
+      termsOfService: false,
+    }),
 }));
 
 export default useRegisterStore;

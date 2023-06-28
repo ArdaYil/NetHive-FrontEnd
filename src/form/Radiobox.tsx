@@ -5,6 +5,7 @@ interface Props {
   id: string;
   block?: boolean;
   name: string;
+  checked: boolean;
   value: string;
   onChange: (value: string) => void;
 }

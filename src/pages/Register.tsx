@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import Checkbox from "../form/Checkbox";
 import DateElement from "../form/Date";
@@ -58,6 +58,7 @@ interface ErrorsInterface {
 
 const Register = () => {
   const registerStore = useRegisterStore();
+  const navigate = useNavigate();
   const { mutate: register } = useRegister(getStoreValues(), onUserRegistered);
   const [errors, setErrors] = useState<ErrorsInterface>({} as ErrorsInterface);
 
@@ -77,6 +78,8 @@ const Register = () => {
 
   function onUserRegistered(user: User, headers: AxiosResponseHeaders) {
     setUser(headers["x-auth-token"]);
+    registerStore.reset();
+    navigate("/");
   }
 
   const handleSubmit = () => {
@@ -121,6 +124,7 @@ const Register = () => {
           <Input
             percentWidth={headerInputSize}
             placeHolder="Name"
+            value={registerStore.name}
             error={errors.name}
             onChange={(name) => {
               registerStore.setName(name);
@@ -129,6 +133,7 @@ const Register = () => {
           <Input
             percentWidth={headerInputSize}
             placeHolder="Surname"
+            value={registerStore.surname}
             error={errors.surname}
             onChange={(surname) => {
               registerStore.setSurname(surname);
@@ -141,6 +146,7 @@ const Register = () => {
           <Input
             type="email"
             placeHolder="Email"
+            value={registerStore.email}
             error={errors.email}
             onChange={(email) => {
               registerStore.setEmail(email);
@@ -150,6 +156,7 @@ const Register = () => {
             type="password"
             placeHolder="Password"
             error={errors.password}
+            value={registerStore.password}
             onChange={(password) => {
               registerStore.setPassword(password);
             }}
@@ -158,6 +165,7 @@ const Register = () => {
             type="password"
             placeHolder="Confirm Password"
             error={errors.confirmPassword}
+            value={registerStore.confirmPassword}
             onChange={(confirmPassword) => {
               registerStore.setConfirmPassword(confirmPassword);
             }}
@@ -165,6 +173,7 @@ const Register = () => {
         </InputGroup>
         <div className="register-form__birthdate">
           <DateElement
+            value={registerStore.birthdate}
             error={errors.birthdate}
             onChange={(birthdate) =>
               registerStore.setBirthdate(new Date(birthdate))
@@ -175,6 +184,7 @@ const Register = () => {
           </DateElement>
         </div>
         <RadioGroup
+          value={registerStore.gender}
           error={errors.gender}
           className="register-form__gender-container"
           name="Gender"
@@ -183,6 +193,7 @@ const Register = () => {
         />
         <div className="register-form__checkbox-container">
           <Checkbox
+            value={registerStore.newsletter}
             onChange={(newsletter) => registerStore.setNewsletter(newsletter)}
             id="newsletter"
           >
@@ -190,6 +201,7 @@ const Register = () => {
           </Checkbox>
           <div style={{ display: "flex" }}>
             <Checkbox
+              value={registerStore.termsOfService}
               error={errors.termsOfService}
               onChange={(termsOfService) =>
                 registerStore.setTermsOfService(termsOfService)

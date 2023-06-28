@@ -1,3 +1,4 @@
+import Time from "../services/Time";
 import LabelInput from "./LabelInput";
 
 interface Props {
@@ -5,6 +6,7 @@ interface Props {
   id: string;
   block?: boolean;
   error?: string;
+  value: Date;
   onChange: (date: Date) => void;
 }
 
@@ -15,6 +17,7 @@ const Date = (props: Props) => (
       {...props}
       textPosition="text-start"
       type="date"
+      value={Time.dateFormat(props.value)}
     />
     {props.error && <p className="input-error">{props.error}</p>}
   </div>

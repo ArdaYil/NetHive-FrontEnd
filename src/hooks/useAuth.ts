@@ -8,8 +8,12 @@ const setUser = (jwt: string) => {
   AuthLocalStorageClient.set("userJwt", jwt);
 };
 
-const getUser = (): User => {
-  return jwtDecode(AuthLocalStorageClient.get("userJwt"));
+const getUser = (): User | undefined => {
+  const jwt = AuthLocalStorageClient.get("userJwt");
+
+  if (!jwt) return;
+
+  return jwtDecode(jwt);
 };
 
 const useAuth = () => {};
