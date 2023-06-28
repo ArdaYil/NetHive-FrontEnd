@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useRegister from "../hooks/userRegister";
 
 const ProtectedRoutes = () => {
-  const user = useAuth();
+  const user = null;
 
   if (!user) return <Navigate to="/login" />;
 

@@ -13,6 +13,10 @@ import { maxLength, minLength } from "../services/nameLengthErrorMessage";
 import parseZodErrors from "../services/parseZodErrors";
 import useRegisterStore from "../stores/useRegisterStore";
 import InputGroup from "../form/InputGroup";
+import useRegister, { RegisterBody } from "../hooks/userRegister";
+import { User } from "../httpServices/UserService";
+import { setUser } from "../hooks/useAuth";
+import { AxiosResponseHeaders } from "axios";
 
 const headerInputSize = 48;
 
@@ -38,6 +42,7 @@ const registerSchema = z.object({
   birthdate: z.date(),
   gender: z.string().min(1, "Please choose a gender"),
   termsOfService: z.boolean(),
+  newsletter: z.boolean(),
 });
 
 interface ErrorsInterface {
@@ -53,21 +58,29 @@ interface ErrorsInterface {
 
 const Register = () => {
   const registerStore = useRegisterStore();
+  const { mutate: register } = useRegister(getStoreValues(), onUserRegistered);
   const [errors, setErrors] = useState<ErrorsInterface>({} as ErrorsInterface);
 
+  function getStoreValues() {
+    return _.pick<RegisterBody>(registerStore, [
+      "name",
+      "surname",
+      "email",
+      "password",
+      "confirmPassword",
+      "birthdate",
+      "gender",
+      "termsOfService",
+      "newsletter",
+    ]) as RegisterBody;
+  }
+
+  function onUserRegistered(user: User, headers: AxiosResponseHeaders) {
+    setUser(headers["x-auth-token"]);
+  }
+
   const handleSubmit = () => {
-    const value = registerSchema.safeParse(
-      _.pick(registerStore, [
-        "name",
-        "surname",
-        "email",
-        "password",
-        "confirmPassword",
-        "birthdate",
-        "gender",
-        "termsOfService",
-      ])
-    );
+    const value = registerSchema.safeParse(getStoreValues());
 
     setErrors({} as ErrorsInterface);
 
@@ -97,7 +110,7 @@ const Register = () => {
   };
 
   const registerAccount = () => {
-    console.log("Register Account");
+    register();
   };
 
   return (
