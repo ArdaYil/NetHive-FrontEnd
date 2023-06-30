@@ -16,7 +16,7 @@ import InputGroup from "../form/InputGroup";
 import useRegister, { RegisterBody } from "../hooks/userRegister";
 import { User } from "../httpServices/UserService";
 import { setUser } from "../hooks/useAuth";
-import { AxiosResponseHeaders } from "axios";
+import { AxiosError, AxiosResponseHeaders } from "axios";
 
 const headerInputSize = 48;
 
@@ -62,7 +62,11 @@ interface ErrorsInterface {
 const Register = () => {
   const registerStore = useRegisterStore();
   const navigate = useNavigate();
-  const { mutate: register } = useRegister(getStoreValues(), onUserRegistered);
+  const { mutate: register } = useRegister(
+    getStoreValues(),
+    onUserRegistered,
+    onUserRegisterError
+  );
   const [errors, setErrors] = useState<ErrorsInterface>({} as ErrorsInterface);
 
   function getStoreValues() {
@@ -83,6 +87,16 @@ const Register = () => {
     setUser(headers["x-auth-token"]);
     registerStore.reset();
     navigate("/");
+  }
+
+  function onUserRegisterError({ response }: AxiosError) {
+    const data = response?.data as any;
+
+    if (data.keyPattern.email === 1) {
+      setErrors({
+        email: "An account with this email is already in use",
+      } as ErrorsInterface);
+    }
   }
 
   const handleSubmit = () => {
