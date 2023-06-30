@@ -12,10 +12,12 @@ class Time {
     const birthday = birthdate.getDate();
     const today = currentDate.getDate();
     let age = currentYear - birthYear - 1;
-
+    console.log(currentYear, birthYear);
+    console.log(today, birthday);
+    console.log(birthMonth, currentMonth);
     if (birthdate.getMonth() < currentDate.getMonth()) age++;
     if (birthMonth === currentMonth && today >= birthday) age++;
-
+    console.log(age);
     return age;
   }
 

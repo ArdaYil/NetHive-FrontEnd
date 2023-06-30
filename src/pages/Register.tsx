@@ -178,7 +178,10 @@ const Register = () => {
           <DateInput
             value={registerStore.birthdate}
             error={errors.birthdate}
-            onChange={(birthdate) => registerStore.setBirthdate(birthdate)}
+            onChange={(birthdate) => {
+              console.log(birthdate);
+              registerStore.setBirthdate(birthdate);
+            }}
             id="birthdate"
           >
             Birthdate:

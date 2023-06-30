@@ -15,7 +15,6 @@ interface Props {
 }
 
 interface DateInterface {
-  [key: string]: number;
   month: number;
   day: number;
   year: number;
@@ -29,13 +28,16 @@ const DateInput = ({ children, error, onChange }: Props) => {
     day: currentDate.getDate(),
   } as DateInterface);
 
-  const toDate = () => new Date(date.year, date.month, date.day);
+  const toDate = (date: DateInterface) =>
+    new Date(date.year, date.month, date.day);
 
   const handleChange = (key: string, value: number | string) => {
     if (typeof value === "string") return;
 
-    setDate({ ...date, [key]: value });
-    onChange(toDate());
+    const newDate = { ...date, [key]: value };
+
+    setDate(newDate);
+    onChange(toDate(newDate));
   };
 
   return (
