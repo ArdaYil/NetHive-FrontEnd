@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import Checkbox from "../form/Checkbox";
-import DateElement from "../form/Date";
+import DateInput from "../form/DateInput";
 import Form from "../form/Form";
 import Input from "../form/Input";
 import RadioGroup from "../form/RadioGroup";
@@ -21,23 +21,26 @@ import { AxiosResponseHeaders } from "axios";
 const headerInputSize = 48;
 
 const registerSchema = z.object({
-  name: z.string().min(1, minLength("Name", 1)).max(50, maxLength("Name", 50)),
+  name: z
+    .string()
+    .min(1, "Name cannot be empty")
+    .max(50, maxLength("Name", 50)),
   surname: z
     .string()
-    .min(1, minLength("Surname", 1))
+    .min(1, "Surname cannot be empty")
     .max(50, maxLength("Surname", 50)),
   email: z
     .string()
     .email("Input has to be an email")
-    .min(1, minLength("Email", 5))
+    .min(5, minLength("Email", 5))
     .max(50, maxLength("Email", 50)),
   password: z
     .string()
-    .min(1, minLength("Password", 8))
+    .min(8, minLength("Password", 8))
     .max(50, maxLength("Password", 100)),
   confirmPassword: z
     .string()
-    .min(1, minLength("Confirm password", 8))
+    .min(8, minLength("Confirm password", 8))
     .max(50, maxLength("Confirm password", 100)),
   birthdate: z.date(),
   gender: z.string().min(1, "Please choose a gender"),
@@ -142,7 +145,7 @@ const Register = () => {
         </InputGroup>
       </header>
       <footer className="register-form__main">
-        <InputGroup>
+        <InputGroup className="register-form__main__text-input-group">
           <Input
             type="email"
             placeHolder="Email"
@@ -172,16 +175,14 @@ const Register = () => {
           />
         </InputGroup>
         <div className="register-form__birthdate">
-          <DateElement
+          <DateInput
             value={registerStore.birthdate}
             error={errors.birthdate}
-            onChange={(birthdate) =>
-              registerStore.setBirthdate(new Date(birthdate))
-            }
+            onChange={(birthdate) => registerStore.setBirthdate(birthdate)}
             id="birthdate"
           >
             Birthdate:
-          </DateElement>
+          </DateInput>
         </div>
         <RadioGroup
           value={registerStore.gender}

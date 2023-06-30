@@ -17,8 +17,8 @@
     @extend %auth-form;
 
     &__gender-container {
-        margin-top: u.em(5);
-
+        margin-bottom: u.em(20);
+        
         &__radiobox-container {
             display: flex;
             gap: u.em(10);
@@ -31,14 +31,14 @@
     }
 
     &__birthdate {
-        margin-top: u.em(10);
+        margin-bottom: u.em(20);
+        margin-left: u.em(2);
     }
 
     &__checkbox-container {
-        margin-top: u.em(40);
         display: flex;
         flex-direction: column;
-        gap: u.em(10);
+        gap: u.em(5);
     }
 
     &__terms-of-service {

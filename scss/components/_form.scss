@@ -1,10 +1,14 @@
 @use "../util" as u;
 
+:root {
+    --border-color: #aaa
+}
+
 .input {
     padding: u.em(10);
     border-radius: u.em(10);
     outline: none;
-    border: u.em(1) solid #aaa;
+    border: u.em(1) solid var(--border-color);
     font-size: u.rem(14);
 }
 
@@ -16,7 +20,7 @@
     margin-left: u.em(5);
     border-radius: u.em(10);
     padding: u.em(5);
-    border: u.em(1) solid #aaa;
+    border: u.em(1) solid var(--border-color);
 
     &__label {
         font-size: u.rem(17);
@@ -31,4 +35,87 @@
     margin-left: u.em(5);
     font-size: u.em(14);
     color: red;
+}
+
+.date-input {
+    &__heading {
+        font-weight: 600;
+    }
+
+    &__content {
+        margin-top: u.em(10);
+        display: flex;
+        flex-direction: row;
+        gap: u.em(10);
+    }
+}
+
+.dropdown-list {
+    position: relative;
+    display: inline-block;
+    width: u.em(120);
+    border: u.em(1) solid var(--border-color);
+    padding: u.em(5);
+    border-radius: u.em(5);
+
+    &__dropdown {
+        display: none;
+        position: absolute;
+        height: u.em(250);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: #fff;
+        border: u.em(2) solid var(--border-color);
+        border-radius: u.em(10);
+        width: 100%;
+        left: 0;
+        top: u.em(35);
+        z-index: 10;
+
+        &__item {
+            cursor: pointer;
+            padding-left: u.em(5);
+
+            &:hover {
+                background-color: #1E90FF;
+                color: white;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: u.em(10);
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: u.em(20);
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    }
+
+    &__dropdown.expanded {
+        display: flex;
+        flex-direction: column;
+        gap: u.em(5);
+    }
+
+    &__default-value-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &__value {
+
+        }
+
+        &__icon {
+            width: u.em(20);
+        }
+    }
 }

@@ -32,6 +32,12 @@ class Time {
 
     return `${year}-${month}-${day}`;
   }
+
+  public static getNumbersOfDaysFromMonth(month: number) {
+    const data = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    return data[month];
+  }
 }
 
 export default Time;

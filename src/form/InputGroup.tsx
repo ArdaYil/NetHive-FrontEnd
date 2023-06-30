@@ -5,9 +5,10 @@ import { em } from "../services/units";
 interface Props {
   children: ReactNode | ReactNode[];
   flow?: "ROW" | "COLUMN";
+  className?: string;
 }
 
-const InputGroup = ({ children, flow = "COLUMN" }: Props) => {
+const InputGroup = ({ children, className, flow = "COLUMN" }: Props) => {
   const style: DynamicIndex<CSSProperties> = {
     marginBottom: em(20),
     display: "flex",
@@ -16,7 +17,11 @@ const InputGroup = ({ children, flow = "COLUMN" }: Props) => {
     gap: flow == "COLUMN" ? em(10) : 0,
   };
 
-  return <section style={style}>{children}</section>;
+  return (
+    <section className={className || ""} style={style}>
+      {children}
+    </section>
+  );
 };
 
 export default InputGroup;

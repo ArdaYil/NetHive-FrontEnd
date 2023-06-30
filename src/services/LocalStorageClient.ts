@@ -3,8 +3,12 @@ class LocalStorageClient<T> {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  public get(key: string): T {
-    return JSON.parse(localStorage.getItem(key) || "");
+  public get(key: string): T | undefined {
+    const item = localStorage.getItem(key);
+
+    if (!item || item === "undefined" || item === "null") return undefined;
+
+    return JSON.parse(item || "");
   }
 }
 
