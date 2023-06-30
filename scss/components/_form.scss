@@ -71,6 +71,7 @@
         left: 0;
         top: u.em(35);
         z-index: 10;
+        padding-block: u.em(5);
 
         &__item {
             cursor: pointer;
@@ -109,9 +110,10 @@
         flex-direction: row;
         justify-content: space-between;
         cursor: pointer;
+        padding: u.em(2);
 
         &__value {
-
+            padding-left: u.em(4);
         }
 
         &__icon {
