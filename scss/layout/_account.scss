@@ -1,0 +1,12 @@
+@use "../util" as u;
+
+.account {
+    &__header {
+        display: flex;
+        gap: u.em(10);
+
+        &__right {
+
+        }
+    }
+}

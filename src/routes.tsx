@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import Login from "./pages/Login";
+import Account from "./pages/Account";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,10 @@ const router = createBrowserRouter([
   },
   {
     element: <ProtectedRoutes />,
-    children: [{ index: true, element: <Homepage /> }],
+    children: [
+      { index: true, element: <Homepage /> },
+      { path: "account", element: <Account /> },
+    ],
   },
 ]);
 
